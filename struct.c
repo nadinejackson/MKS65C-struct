@@ -61,4 +61,16 @@ int main(){
     modify(&test, mcName, 99.5);
     printStu(test);
     return 0;
+  printf("Test of random student and gpa\n");
+  printStu(example());
+  struct student test;
+  strcpy(test.name, "Voldemort");
+  test.gpa = 55;
+  char *mcName = "Harry";
+  printf("Making new student named Voldemort, gpa of 55\n");
+  printStu(test);
+  modify(&test, mcName, 99.5);
+  printf("Changing name to harry and gpa to 99.5\n");
+  printStu(test);
+  return 0;
 }
