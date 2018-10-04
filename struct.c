@@ -37,12 +37,16 @@ void modify(struct student *s, char *newName, float newGPA)
     s->gpa = newGPA;
 }
 
+// Randomize vowels
 void vowel(struct student *s){
-    int i = 0;
-    char *vowels = "aeiou";
-    char * mod = s->name;
-    while (mod++){
-        if (*mod){}
+    char * change = s->name;
+    char * v = "aeiou";
+    while(*change){
+        if ( strchr( v, *change) != NULL ){
+            char rvowel = *(v + (int)(rand() % 5));
+            *change = rvowel;
+        }
+        change++;
     }
 }
 
@@ -52,13 +56,34 @@ void printStu(struct student s)
 }
 
 int main(){
-    printStu(example());
+
+    struct student bob = example();
+    printStu(bob);
+
+    printf("Change student gpa to 100\n");
+    modify(&bob, bob.name, 100);
+    printStu(bob);
+
+    printf("Randomize vowels in student name\n");
+    vowel(&bob);
+    printStu(bob);
+
     struct student test;
     strcpy(test.name, "Voldemort");
     test.gpa = 55;
+    vowel(&test);
+    printStu(test);
+
     char *mcName = "Harry";
-    printStu(test);
     modify(&test, mcName, 99.5);
+    vowel(&test);
     printStu(test);
+
     return 0;
+
 }
+
+
+
+
+
