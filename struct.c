@@ -24,7 +24,6 @@ char names[40][15] = {
 
 struct student example()
 {
-    srand(time(NULL));
     struct student bob;
     strcpy(bob.name, names[rand() % 40]);
     bob.gpa = rand() % 37 + 64;
@@ -56,6 +55,7 @@ void printStu(struct student s)
 }
 
 int main(){
+    srand(time(NULL));
 
     struct student bob = example();
     printStu(bob);
